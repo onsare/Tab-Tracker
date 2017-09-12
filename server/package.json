@@ -11,9 +11,13 @@
   "author": "Denis Onsare",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.18.1",
+    "cors": "^2.8.4",
     "eslint": "^4.6.1",
     "express": "^4.15.4",
-    "nodemon": "^1.11.0"
+    "morgan": "^1.8.2",
+    "nodemon": "^1.11.0",
+    "path": "^0.12.7"
   },
   "devDependencies": {
     "eslint-config-standard": "^10.2.1",
