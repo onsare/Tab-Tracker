@@ -4,12 +4,22 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "nodemon src/app.js --exec \"npm run lint && node\"",
+    "lint": "./node_modules/.bin/eslint --fix **/*.js"
   },
   "keywords": [],
   "author": "Denis Onsare",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.15.4"
+    "eslint": "^4.6.1",
+    "express": "^4.15.4",
+    "nodemon": "^1.11.0"
+  },
+  "devDependencies": {
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^5.1.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1"
   }
 }
