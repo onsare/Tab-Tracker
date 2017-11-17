@@ -3,6 +3,8 @@ const express = require('express')
 const morgan = require('morgan')
 const cors = require('cors')
 const bodyParser = require('body-parser')
+const config = require('./config/config')
+const {sequelize} = require('./models')
 
 // create instance of express application
 const app = express()
@@ -11,12 +13,10 @@ app.use(bodyParser.json())
 app.use(morgan('combined'))
 app.use(cors())
 
-app.get('/', (req, res) => {
-  res.json({'message': 'welcome to the api'})
-})
+require('./routes')(app)
 
-app.post('/register', (req, res) => {
-  res.json({message: `hello ${req.body.email} you have successfully registered`})
-})
-
-app.listen(3000, () => console.log('App listening on port http://localhost:3000'))
+sequelize.sync({force: true})
+  .then(() => {
+    app.listen(config.port)
+    console.log(`Server started on http://localhost/${config.port}`)
+  })

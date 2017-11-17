@@ -1,13 +1,14 @@
 <template>
   <v-layout class="margin-top">
     <v-flex xs6 offset-xs3>
-      <panel title="Register">
+      <panel title="Login">
         <v-layout row>
           <v-text-field
             name="email"
             type="email"
             label="Enter Email"
             v-model="email"
+            autocomplete="off"
           ></v-text-field>
         </v-layout>
         <v-layout row>
@@ -16,18 +17,15 @@
             type="password"
             label="Password"
             v-model="password"
+            autocomplete="off"
           ></v-text-field>
         </v-layout>
           <p class="error" v-html="error"></p>
-          <v-btn 
-          color="cyan"  
-          dark 
-          @click="register">Register
-          </v-btn>
+          <v-btn color="cyan"  dark @click="register">Login</v-btn>
       </panel>
     </v-flex>
   </v-layout>
-      
+  
 </template>
 
 <script>
@@ -44,7 +42,7 @@ export default {
   methods: {
     async register () {
       try {
-        const response = await AuthenticationService.register({
+        const response = await AuthenticationService.login({
           email: this.email,
           password: this.password
         })
@@ -66,7 +64,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   .error{
-    color:white;
+    color: white;
   }
   .margin-top{
     margin-top: 20px;
